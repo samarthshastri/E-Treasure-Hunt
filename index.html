@@ -1,0 +1,82 @@
+<!--
+You may use this in any way, on any site, all we ask is that you please keep the link(s) crediting the author.   Though this is not mandatory, it is certainly appreciated.
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<script language="JavaScript">
+
+var hoursleft = 23;
+var minutesleft = 54;			
+var secondsleft = 0;
+var millisecondsleft = 0;
+var finishedtext = "Countdown finished!" ;
+end = new Date();
+end.setHours(hoursleft);
+end.setMinutes(minutesleft);
+end.setSeconds(secondsleft);
+end.setMilliseconds(millisecondsleft);
+function cd(){
+	now = new Date();
+	diff = end - now;
+	diff = new Date(diff);
+	var msec = diff.getMilliseconds();
+	var sec = diff.getSeconds();
+	var min = diff.getMinutes()-30;
+	var hr = diff.getHours()-5;
+	if (min < 10){
+		min = "0" + min;
+	}
+	if (sec < 10){
+		sec = "0" + sec;
+	}
+	if(msec < 10){
+		msec = "00" +msec;
+	}
+	else if(msec < 100){
+		msec = "0" +msec;
+	}
+	if(now >= end){
+		clearTimeout(timerID);
+		document.getElementById("cdtime").innerHTML = finishedtext;
+		window.location.href="pageone.html";
+		
+	}
+	else{
+	document.getElementById("cdtime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec;
+	}		
+	timerID = setTimeout("cd()", 10); 
+}
+window.onload = cd;
+
+</script>
+	
+	
+	
+	<title>E-Treasure Hunt</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="bluebliss.css" />
+</head>
+<body>
+
+<div id="mainContentArea">
+	<div id="contentBox">
+       <h1> <div id="title" align="center" >E-Treasure Hunt</div>
+        
+        The event commences in : 
+		<span id="cdtime"/>
+		
+		</h1>
+        
+        <div id="blueBox"> 
+          <div id="header"></div>
+          <div class="contentTitle">Welcome to E-Treasure Hunt.</div>
+		  
+		   
+            <div id="footer"><a href="http://www.aszx.net">web development</a> by <a>Pramodh.N.R and Samarth.V.Shastri</a></div>
+        </div>
+	</div>
+</div>
+</body>
+</html>
